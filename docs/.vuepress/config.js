@@ -1,7 +1,8 @@
 import { defineUserConfig } from "vuepress-vite";
 import { path } from "@vuepress/utils";
 import { defaultTheme } from "@vuepress/theme-default";
-
+import { getNavConfig } from "../utils/getNavConfig";
+// console.log(getNavConfig("Vuepress", ""));
 export default defineUserConfig({
   base: "/",
   lang: "zh-TW",
@@ -13,23 +14,6 @@ export default defineUserConfig({
     // "@@": path.resolve(__dirname, "./theme"),
   },
   theme: defaultTheme({
-    navbar: [
-      // NavbarItem
-      {
-        text: "Home",
-        link: "/",
-      },
-      {
-        text: "last",
-        link: "/last/hello",
-      },
-      // NavbarGroup
-      {
-        text: "Group",
-        children: [{ text: "test", link: "/group/foo" }, "/group/bar"],
-      },
-      // string - page file path
-      //   "README.md",
-    ],
+    navbar: [...getNavConfig("技術系列", "Technical")],
   }),
 });
