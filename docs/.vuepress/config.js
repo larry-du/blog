@@ -12,16 +12,26 @@ const navRoute = articleSeries.map((navConfig) => {
 export default defineUserConfig({
   base: "/",
   lang: "zh-TW",
-  title: "部落格測試",
-  description: "才能是拿來浪費的",
-  head: [["link", { rel: "icon", href: "/images/circle.png" }]],
+  title: "技能是拿來浪費的",
+  description: "Larry Blog",
+  head: [
+    [
+      "link",
+      {
+        rel: "icon",
+        href: "https://avatars.githubusercontent.com/u/58778998?v=4",
+      },
+    ],
+  ],
   alias: {
     "@": path.resolve(__dirname, "../../src"),
   },
   theme: defaultTheme({
     navbar: navRoute,
     sidebarDepth: 2,
+    logo: "https://i.imgur.com/xOpYEzi.png",
+    logoDark: "https://i.imgur.com/OPowSp7.png",
+    repo: "https://github.com/larry-du",
+    editLink: false,
   }),
 });
-
-[{ text: "", children: [{ text: "", link: "" }] }];
