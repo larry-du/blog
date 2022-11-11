@@ -4,7 +4,7 @@ import fs from "fs";
 function createRoute(folderName) {
   const extension = ".md";
   const excludeFile = "readme.md";
-  const absolutePath = path.join(`${__dirname}/../article`, folderName);
+  const absolutePath = path.join(`${__dirname}/../articles`, folderName);
 
   const linkItem = fs
     .readdirSync(path.join(absolutePath))
@@ -19,7 +19,7 @@ function createRoute(folderName) {
     })
     .map((fileName) => {
       const navItemName = fileName.replace(/.md/i, "");
-      return { text: navItemName, link: `/article/${folderName}/${fileName}` };
+      return { text: navItemName, link: `/articles/${folderName}/${fileName}` };
     });
   return { text: folderName, children: [...linkItem] };
 }
