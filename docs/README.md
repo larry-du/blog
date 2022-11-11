@@ -1,6 +1,6 @@
 ---
-title: My Blog
-description: blog
+title: Larry Blog
+description: Blog For Record
 ---
 
 # 首頁
