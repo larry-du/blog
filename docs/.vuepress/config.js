@@ -26,7 +26,7 @@ export default defineUserConfig({
   ],
   plugins: [
     googleAnalyticsPlugin({
-      id: "G-V62PJVW3S1",
+      id: "G-WGY2TQ6NB3",
     }),
   ],
   alias: {
