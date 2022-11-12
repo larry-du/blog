@@ -1,6 +1,7 @@
 import { defineUserConfig } from "vuepress-vite";
 import { path } from "@vuepress/utils";
 import { defaultTheme } from "@vuepress/theme-default";
+import { googleAnalyticsPlugin } from "@vuepress/plugin-google-analytics";
 import { createRoute, createArticleSeries } from "../utils";
 
 const articleSeries = createArticleSeries();
@@ -22,6 +23,11 @@ export default defineUserConfig({
         href: "https://avatars.githubusercontent.com/u/58778998?v=4",
       },
     ],
+  ],
+  plugins: [
+    googleAnalyticsPlugin({
+      id: "G-V62PJVW3S1",
+    }),
   ],
   alias: {
     "@": path.resolve(__dirname, "../../src"),
