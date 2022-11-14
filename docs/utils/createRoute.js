@@ -1,7 +1,7 @@
 import path from "path";
 import fs from "fs";
 
-function createRoute(folderName) {
+function createRoute(folderName, navigationTarget) {
   const extension = ".md";
   const excludeFile = "readme.md";
   const absolutePath = path.join(`${__dirname}/../articles`, folderName);
@@ -19,9 +19,19 @@ function createRoute(folderName) {
     })
     .map((fileName) => {
       const navItemName = fileName.replace(/.md/i, "");
-      return { text: navItemName, link: `/articles/${folderName}/${fileName}` };
+      switch (navigationTarget) {
+        case "nav": {
+          return {
+            text: navItemName,
+            link: `/articles/${folderName}/${fileName}`,
+          };
+        }
+        case "sidebar": {
+          return `/articles/${folderName}/${fileName}`;
+        }
+      }
     });
-  return { text: folderName, children: [...linkItem] };
+  return linkItem;
 }
 
 export default createRoute;

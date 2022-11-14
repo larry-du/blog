@@ -5,10 +5,24 @@ import { searchPlugin } from "@vuepress/plugin-search";
 import { googleAnalyticsPlugin } from "@vuepress/plugin-google-analytics";
 import { createRoute, createArticleSeries } from "../utils";
 
+const navigationTarget = {
+  nav: "nav",
+  sidebar: "sidebar",
+};
+
 const articleSeries = createArticleSeries();
 
-const navRoute = articleSeries.map((navConfig) => {
-  return createRoute(navConfig);
+const navRoute = articleSeries.map((folderName) => {
+  return {
+    text: folderName,
+    children: createRoute(folderName, navigationTarget.nav),
+  };
+});
+const sidebar = articleSeries.map((folderName) => {
+  return {
+    text: folderName,
+    children: createRoute(folderName, navigationTarget.sidebar),
+  };
 });
 
 export default defineUserConfig({
@@ -44,7 +58,8 @@ export default defineUserConfig({
   },
   theme: defaultTheme({
     navbar: navRoute,
-    sidebarDepth: 2,
+    sidebar: sidebar,
+    sidebarDepth: 0,
     logo: "https://i.imgur.com/xOpYEzi.png",
     logoDark: "https://i.imgur.com/OPowSp7.png",
     repo: "https://github.com/larry-du",
