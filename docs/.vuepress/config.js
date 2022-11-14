@@ -36,6 +36,7 @@ export default defineUserConfig({
           placeholder: "文章搜尋",
         },
       },
+      maxSuggestions: 15,
     }),
   ],
   alias: {
