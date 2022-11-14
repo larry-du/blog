@@ -1,6 +1,7 @@
 import { defineUserConfig } from "vuepress-vite";
 import { path } from "@vuepress/utils";
 import { defaultTheme } from "@vuepress/theme-default";
+import { searchPlugin } from "@vuepress/plugin-search";
 import { googleAnalyticsPlugin } from "@vuepress/plugin-google-analytics";
 import { createRoute, createArticleSeries } from "../utils";
 
@@ -27,6 +28,14 @@ export default defineUserConfig({
   plugins: [
     googleAnalyticsPlugin({
       id: "G-WGY2TQ6NB3",
+    }),
+    searchPlugin({
+      isSearchable: (page) => page.path !== "/",
+      locales: {
+        "/": {
+          placeholder: "文章搜尋",
+        },
+      },
     }),
   ],
   alias: {
