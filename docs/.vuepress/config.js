@@ -1,9 +1,15 @@
 import { defineUserConfig } from "vuepress-vite";
-import { path } from "@vuepress/utils";
+// import { getDirname, path } from "@vuepress/utils";
 import { defaultTheme } from "@vuepress/theme-default";
 import { searchPlugin } from "@vuepress/plugin-search";
 import { googleAnalyticsPlugin } from "@vuepress/plugin-google-analytics";
 import { createRoute, createArticleSeries } from "../utils";
+import { viteBundler } from "@vuepress/bundler-vite";
+
+// import { defaultTheme, defineUserConfig } from 'vuepress'
+// const __dirname = getDirname(import.meta.url);
+// console.log(__dirname);
+// console.log(path.resolve(__dirname, "./theme/components/Home.vue"));
 
 const navigationTarget = {
   nav: "nav",
@@ -28,7 +34,7 @@ const sidebar = articleSeries.map((folderName) => {
 export default defineUserConfig({
   base: "/",
   lang: "zh-TW",
-  title: "技能是拿來浪費的",
+  title: "才能是拿來浪費的",
   description: "Larry Blog",
   head: [
     [
@@ -54,7 +60,7 @@ export default defineUserConfig({
     }),
   ],
   alias: {
-    "@": path.resolve(__dirname, "../../src"),
+    // "@": path.resolve(__dirname, "../../src"),
   },
   theme: defaultTheme({
     navbar: navRoute,
@@ -64,5 +70,18 @@ export default defineUserConfig({
     logoDark: "https://i.imgur.com/OPowSp7.png",
     repo: "https://github.com/larry-du",
     editLink: false,
+  }),
+  bundler: viteBundler({
+    viteOptions: {},
+    vuePluginOptions: {
+      template: {
+        compilerOptions: {
+          isCustomElement: (tag) => {
+            const customElement = ["font"];
+            return customElement.includes(tag);
+          },
+        },
+      },
+    },
   }),
 });

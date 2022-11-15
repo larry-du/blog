@@ -1,6 +1,7 @@
 ---
 title: Larry Blog
 description: Blog For Record
+sidebar: false
 ---
 
 # 首頁
