@@ -27,6 +27,7 @@ const navRoute = articleSeries.map((folderName) => {
 const sidebar = articleSeries.map((folderName) => {
   return {
     text: folderName,
+    collapsible: true,
     children: createRoute(folderName, navigationTarget.sidebar),
   };
 });
