@@ -13,17 +13,17 @@ const navigationTarget = {
 
 const articleSeries = createArticleSeries();
 
-const navRoute = articleSeries.map((folderName) => {
+const navRoute = articleSeries.map(({ pathName, navName }) => {
   return {
-    text: folderName,
-    children: createRoute(folderName, navigationTarget.nav),
+    text: navName,
+    children: createRoute(pathName, navigationTarget.nav),
   };
 });
-const sidebar = articleSeries.map((folderName) => {
+const sidebar = articleSeries.map(({ pathName, navName }) => {
   return {
-    text: folderName,
+    text: navName,
     collapsible: true,
-    children: createRoute(folderName, navigationTarget.sidebar),
+    children: createRoute(pathName, navigationTarget.sidebar),
   };
 });
 
