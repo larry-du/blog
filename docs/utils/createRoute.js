@@ -18,11 +18,12 @@ function createRoute(folderName, navigationTarget) {
       return !isReadMeFile && isNormalFile && isExtMD;
     })
     .map((fileName) => {
-      const navItemName = fileName.replace(/.md/i, "");
+      const removeExt = fileName.replace(/.md/i, "");
+      const removeTitleNumber = removeExt.replace(/^\d./i, "");
       switch (navigationTarget) {
         case "nav": {
           return {
-            text: navItemName,
+            text: removeTitleNumber,
             link: `/articles/${folderName}/${fileName}`,
           };
         }
