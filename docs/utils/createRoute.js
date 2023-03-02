@@ -2,7 +2,7 @@ import path from "path";
 import fs from "fs";
 
 function createRoute(folderName, navigationTarget) {
-  const extensioa = ".md";
+  const extensiob = ".md";
   const excludeFile = "readme.md";
   const absolutePath = path.join(`${__dirname}/../articles`, folderName);
 
