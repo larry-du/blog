@@ -49,7 +49,7 @@ const { placeHolder, modelValue, labelStyle, label, type } = toRefs(props);
 <style lang="sass" scoped>
 .title
     color: lightgreen
-    display: block
+    display: inline-block
     &.blue
         color: lightblue
 .input-demo
