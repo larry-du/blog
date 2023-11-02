@@ -19,13 +19,13 @@ const navRoute = articleSeries.map(({ pathName, navName }) => {
     children: createRoute(pathName, navigationTarget.nav),
   };
 });
-const sidebar = articleSeries.map(({ pathName, navName }) => {
-  return {
-    text: navName,
-    collapsible: true,
-    children: createRoute(pathName, navigationTarget.sidebar),
-  };
-});
+// const sidebar = articleSeries.map(({ pathName, navName }) => {
+//   return {
+//     text: navName,
+//     collapsible: true,
+//     children: createRoute(pathName, navigationTarget.sidebar),
+//   };
+// });
 
 export default defineUserConfig({
   base: "/",
@@ -58,10 +58,13 @@ export default defineUserConfig({
   alias: {
     "@": path.resolve(__dirname, "../../src"),
   },
+  markdown: {
+    anchor: true,
+  },
   theme: defaultTheme({
     navbar: navRoute,
-    sidebar: sidebar,
-    sidebarDepth: 0,
+    // sidebar: sidebar,
+    // sidebarDepth: 0,
     logo: "https://i.imgur.com/xOpYEzi.png",
     logoDark: "https://i.imgur.com/OPowSp7.png",
     repo: "https://github.com/larry-du",
