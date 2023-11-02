@@ -1,10 +1,14 @@
 import { defineUserConfig } from "vuepress-vite";
-import { path } from "@vuepress/utils";
+import { getDirname, path } from "@vuepress/utils";
+
 import { defaultTheme } from "@vuepress/theme-default";
 import { searchPlugin } from "@vuepress/plugin-search";
 import { googleAnalyticsPlugin } from "@vuepress/plugin-google-analytics";
 import { createRoute, createArticleSeries } from "../utils";
 import { viteBundler } from "@vuepress/bundler-vite";
+
+const __dirname = getDirname(import.meta.url);
+console.log("__dirname", __dirname);
 
 const navigationTarget = {
   nav: "nav",
@@ -55,9 +59,6 @@ export default defineUserConfig({
       maxSuggestions: 15,
     }),
   ],
-  alias: {
-    "@": path.resolve(__dirname, "../../src"),
-  },
   markdown: {
     anchor: true,
   },
@@ -71,7 +72,13 @@ export default defineUserConfig({
     editLink: false,
   }),
   bundler: viteBundler({
-    viteOptions: {},
+    viteOptions: {
+      resolve: {
+        alias: {
+          "@": path.resolve(__dirname, "demoComponent"),
+        },
+      },
+    },
     vuePluginOptions: {
       template: {
         compilerOptions: {
